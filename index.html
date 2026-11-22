@@ -14,14 +14,14 @@
 <label class="upload"><strong>📷 Foto utama</strong><small>Pilih foto orang atau karakter</small><input id="photo" type="file" accept="image/*"><img id="photoPreview" class="preview" alt="Pratinjau foto"></label>
 <label class="upload"><strong>🎬 Video referensi gerakan</strong><small>Pilih video gerakan yang ingin ditiru</small><input id="motion" type="file" accept="video/*"><video id="videoPreview" class="preview" controls></video></label>
 </div>
-<button id="go">Mulai buat video</button>
+<button id="go">Lanjut ke mesin Wan Animate</button>
 <div id="status" class="status" role="status">Pilih foto dan video referensi untuk memulai.</div>
-<p class="note"><b>Catatan:</b> Ini adalah versi awal tampilan Yumi. Mesin AI untuk memindahkan gerakan ke foto belum tersambung, jadi tombol ini belum menghasilkan MP4. Situs ini tidak akan mengunggah file kamu ke layanan lain tanpa tindakan kamu.</p>
+<p class="note"><b>Cara pakai:</b> Pilih foto karakter dan video gerakan di sini untuk melihat pratinjau. Tekan tombol di atas untuk membuka studio Wan Animate, lalu pilih kembali kedua file di studio tersebut dan mulai proses. Hasil video dapat diunduh dari studio Wan.</p><p class="note"><b>Info gratis:</b> Studio Wan memakai kuota GPU publik. Bisa ada antrean, batas penggunaan, atau layanan sedang tidak tersedia. File akan diproses oleh layanan pihak ketiga setelah kamu mengunggahnya di sana. Jangan unggah foto atau video pribadi yang sensitif.</p>
 </section><div class="foot">YUMI AI VIDEO · Versi awal</div>
 </main>
 <script>
 const photo=document.getElementById('photo'),motion=document.getElementById('motion'),pp=document.getElementById('photoPreview'),vp=document.getElementById('videoPreview'),status=document.getElementById('status');
 photo.addEventListener('change',()=>{if(photo.files[0]){pp.src=URL.createObjectURL(photo.files[0]);pp.style.display='block';status.textContent='Foto dipilih. Sekarang pilih video referensi.'}});
-motion.addEventListener('change',()=>{if(motion.files[0]){vp.src=URL.createObjectURL(motion.files[0]);vp.style.display='block';status.textContent='Video dipilih. Tampilan siap; mesin AI belum terhubung.'}});
-document.getElementById('go').addEventListener('click',()=>{status.textContent=(!photo.files[0]||!motion.files[0])?'Pilih foto dan video referensi dulu.':'File sudah dipilih, tetapi mesin AI Yumi belum terhubung. Belum ada video MP4 yang dibuat.'});
+motion.addEventListener('change',()=>{if(motion.files[0]){vp.src=URL.createObjectURL(motion.files[0]);vp.style.display='block';status.textContent='Foto dan video sudah dipilih. Tekan tombol untuk membuka studio Wan, lalu pilih ulang kedua file di sana.'}});
+document.getElementById('go').addEventListener('click',()=>{if(!photo.files[0]||!motion.files[0]){status.textContent='Pilih foto dan video referensi dulu.';return;}status.textContent='Membuka studio Wan Animate. Pilih ulang foto dan video di halaman yang terbuka untuk mulai membuat video.';window.open('https://wan2.video/wan-animate-online','_blank','noopener');});
 </script></body></html>
